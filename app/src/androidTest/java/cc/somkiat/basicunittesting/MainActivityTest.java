@@ -12,8 +12,11 @@ import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -24,11 +27,9 @@ public class MainActivityTest {
     @Test
     public void TestEmpty(){
         Espresso.closeSoftKeyboard();
-        SystemClock.sleep(1500);
 
         onView(withId(R.id.revertButton)).perform(scrollTo(), click());
-
-//        onView(allOf(withId(R.id.nameError), isDisplayed())).check(matches(withText("Name must not empty")));
-//        onView(allOf(withId(R.id.emailError), isDisplayed())).check(matches(withText("email must not empty")));
+        onView(withId(R.id.userNameInput)).check(matches(withText("")));
+        onView(withId(R.id.emailInput)).check(matches(withText("")));
     }
 }

@@ -3,6 +3,7 @@ package cc.somkiat.basicunittesting;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -11,6 +12,9 @@ public class MainActivity extends AppCompatActivity{
     private EditText nameText, emailText;
     private TextView nameErr, emailErr;
     private String name, email;
+
+    private Button save;
+    private Button revert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +25,8 @@ public class MainActivity extends AppCompatActivity{
         emailText = findViewById(R.id.emailInput);
         nameErr = findViewById(R.id.nameError);
         emailErr = findViewById(R.id.emailError);
+        this.save = findViewById(R.id.saveButton);
+        this.revert = findViewById(R.id.revertButton);
     }
 
     public void onSaveClick(View view) {
