@@ -25,11 +25,12 @@ public class MainActivityTest {
     public ActivityTestRule<MainActivity> mActivityTestRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void TestEmpty(){
+    public void TestSaveEmpty(){
         Espresso.closeSoftKeyboard();
-
-        onView(withId(R.id.revertButton)).perform(scrollTo(), click());
-        onView(withId(R.id.userNameInput)).check(matches(withText("")));
-        onView(withId(R.id.emailInput)).check(matches(withText("")));
+        onView(withId(R.id.userNameInput)).perform(scrollTo() ,replaceText(""));
+        onView(withId(R.id.emailInput)).perform(scrollTo(), replaceText(""));
+        onView(withId(R.id.saveButton)).perform(scrollTo(), click());
+        onView(withId(R.id.nameError)).check(matches(withText("Name must not empty")));
+        onView(withId(R.id.emailError)).check(matches(withText("email must not empty")));
     }
 }
