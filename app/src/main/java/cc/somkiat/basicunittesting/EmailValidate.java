@@ -10,7 +10,7 @@ public class EmailValidate {
             return false;
         }
         else if (isContainSpace(email)) {
-            errMessage = "Name must not have space";
+            errMessage = "email must not have space";
             return false;
         }
         else if(isInemailPattern(email)){
