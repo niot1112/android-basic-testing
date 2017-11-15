@@ -16,21 +16,21 @@ public class EmailValidateTest {
     @Test
     public void EmptyEmail(){
         EmailValidate emailValidateTest = new EmailValidate();
-        boolean result = !emailValidateTest.check("");
+        boolean result = !emailValidateTest.check("");//remove ! to get fail test
         assertTrue("Email is empty", result);
     }
 
     @Test
     public void SpaceInEmail(){
         EmailValidate emailValidateTest = new EmailValidate();
-        boolean result = !emailValidateTest.check("email @email.com");
+        boolean result = !emailValidateTest.check("email @email.com");//remove ! to get fail test
         assertTrue("Email has space", result);
     }
 
     @Test
     public void PatternEmail(){
         EmailValidate emailValidateTest = new EmailValidate();
-        boolean result = !emailValidateTest.check("email.com");
+        boolean result = !emailValidateTest.check("email.com");//remove ! to get fail test
         assertTrue("Email is not in pattern", result);
     }
 
@@ -38,7 +38,7 @@ public class EmailValidateTest {
     public void ErrMessage(){
         EmailValidate emailValidateTest = new EmailValidate();
 
-        emailValidateTest.check("email@email.com");//change to get different ErrMessage here
+        emailValidateTest.check("email@email.com");//change "email@email.com" to get different ErrMessage here
 
         boolean result = emailValidateTest.getErrMessage().isEmpty();
         assertTrue(emailValidateTest.getErrMessage(), result);

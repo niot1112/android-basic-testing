@@ -14,7 +14,7 @@ public class EmailValidate {
             return false;
         }
         else if(isInemailPattern(email)){
-            errMessage = "email must have @";
+            errMessage = "email must has one @";
             return false;
         }
         return true;
@@ -28,7 +28,20 @@ public class EmailValidate {
     }
 
     public boolean isInemailPattern(String name) {
-        if (!name.contains("@")){
+        if (!countChar(name)){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean countChar(String name) {
+        int counter = 0;
+        for(int i=0;i<name.length();i++){
+            if(name.charAt(i) == '@'){
+                counter++;
+            }
+        }
+        if (counter == 1){
             return true;
         }
         return false;
