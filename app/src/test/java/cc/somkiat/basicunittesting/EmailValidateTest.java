@@ -7,6 +7,13 @@ import static junit.framework.Assert.assertTrue;
 
 public class EmailValidateTest {
     @Test
+    public void TryEmail(){
+        EmailValidate emailValidate = new EmailValidate();
+        boolean result = emailValidate.checks("@").equals("pass");
+        assertTrue(emailValidate.checks(""), result);
+    }
+
+    @Test
     public void NormalEmail(){
         EmailValidate emailValidateTest = new EmailValidate();
         boolean result = emailValidateTest.check("email@email.com");

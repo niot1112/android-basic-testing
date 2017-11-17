@@ -1,8 +1,29 @@
 package cc.somkiat.basicunittesting;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
+import cc.somkiat.basicunittesting.validate_class.TryEmailValidateEmpty;
+import cc.somkiat.basicunittesting.validate_class.TryEmailValidatePattern;
+import cc.somkiat.basicunittesting.validate_class.TryEmailValidateSpace;
+import cc.somkiat.basicunittesting.validate_class.TryValidator;
+
 public class EmailValidate {
     private String errMessage = "";
+
+    public String checks(String email){
+        List<TryValidator> tryValidators = new ArrayList<>();
+        tryValidators.add(new TryEmailValidateEmpty());
+        tryValidators.add(new TryEmailValidateSpace());
+        tryValidators.add(new TryEmailValidatePattern());
+        for(TryValidator tryValidator:tryValidators){
+            if(tryValidator.isValid(email)){
+                return tryValidator.getErrMessages();
+            }
+        }
+        return "pass";
+    }
 
     public boolean check(String email) {
         if (isEmpty(email)){
